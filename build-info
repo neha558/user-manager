@@ -1,0 +1,15 @@
+go to root folder location 
+
+sudo npm install 
+sudo npm run build 
+sudo npm start:prod
+
+for connet remote redis server you have to do some changes in redis configuration file  vim /etc/redis/redis.con 
+
+and put comment 127.0.0.1::1
+ restart redis service   sudo systemctl restart redis 
+then run npm run start:prod will run application on 3005 port 
+
+typepublicip:3005/user-manager/health 
+
+check end point user-manager/health this in server.js file which is in root folder 

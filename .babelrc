@@ -1,0 +1,22 @@
+{
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    ["@babel/plugin-transform-runtime", { "regenerator": true }],
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "appConfig": "./config",
+          "controllers": "./src/controllers",
+          "services": "./src/services",
+          "policies": "./src/policies",
+          "models": "./src/models",
+          "utils": "./src/utilities",
+          "templates": "./src/templates",
+          "publisher": "./src/publisher"
+        }
+      }
+    ]
+  ]
+}

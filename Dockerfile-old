@@ -1,0 +1,32 @@
+FROM node:12.22.1-slim
+
+WORKDIR /app
+
+# ---------- Builder ----------
+# Creates:
+# - node_modules: production dependencies (no dev dependencies)
+# - dist: A production build compiled with Babel
+# FROM base AS builder
+
+COPY package*.json .babelrc ./
+
+# RUN npm install
+
+COPY . .
+
+#RUN apt-get update -y && apt-get install -y curl
+
+RUN npm install -f && \
+    npm update
+
+RUN npm run build
+
+#RUN npm prune --production # Remove dev dependencies
+
+##ENV NODE_CONFIG_DIR=./dist/config
+
+##USER node
+EXPOSE 3005
+#EXPOSE 3030
+#CMD npm run db:migrate && npm run start:prod
+CMD npm run start:prod
